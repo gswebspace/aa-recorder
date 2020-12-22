@@ -141,6 +141,12 @@ function Camera(config) {
 	}
 	this.urlBase = config.url;
 
+	// Every camera must have a recordingDuration.
+	if (!config.recordingDuration) {
+		throw "no recordingDuration defined for camera " + this.name;
+	}
+	this.recordingDuration = config.recordingDuration;
+
 	// Arguments to be added to the URL. May be undefined.
 	this.urlArgs = config.args;
 
@@ -211,6 +217,7 @@ Camera.prototype.buildFfmpegArgs = function() {
 	args.push(
 		'-i', this.buildUrl(),
 		'-vcodec', 'copy', '-an',
+		'-t',this.recordingDuration,
 		this.buildFilename()
 	);
 

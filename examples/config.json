@@ -4,6 +4,7 @@
 		{ 
 			"name": "axis-camera", 
 			"url": "rtsp://192.168.1.101/axis-media/media.amp",
+			"recordingDuration" : "00:01:00",
 			"args": {
 				"videocodec": "h264",
 				"compression": "20",
